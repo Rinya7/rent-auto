@@ -1,27 +1,26 @@
-import { Route, Routes } from 'react-router-dom';
-import SharedLayout from './components/SharedLayout/SharedLayout';
-import FirstPage from './pages/FirstPage/FirstPage';
-import SecondPage from './pages/SecondPage/SecondPage';
-import HalfPage from './pages/HalfPage/HalfPage';
-import ErrorPage from './pages/ErrorPage/ErrorPage';
+import { Route, Routes, Navigate } from 'react-router-dom';
+//import SharedLayout from './components/SharedLayout/SharedLayout';
+import Home from './pages/Home/Home';
+import Catalog from './pages/Catalog/Catalog';
+import Favorites from './pages/Favorites/Favorites';
 import { AppWrapper } from './App.styled';
+import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer/Footer';
 
-const test = import.meta.env.VITE_API_TEST;
+//const test = import.meta.env.VITE_API_TEST;
 
 function App() {
-  console.log(test);
+  //  console.log(test);
   return (
     <AppWrapper>
+      <Header />
       <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route path="/first" element={<FirstPage />} />
-          <Route path="/second" element={<SecondPage />}>
-            <Route path=":half" element={<HalfPage />} />
-          </Route>
-
-          <Route path="*" element={<ErrorPage />} />
-        </Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/catalog" element={<Catalog />} />
+        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
+      <Footer />
     </AppWrapper>
   );
 }
