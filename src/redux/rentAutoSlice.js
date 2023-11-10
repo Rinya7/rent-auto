@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const rentAutoSlice = createSlice({
   name: 'rentAuto',
 
-  initialState: { rentAutos: [] },
+  initialState: { rentAutos: [], isLoading: false, error: null },
 
   reducers: {
     addAuto(state, action) {
