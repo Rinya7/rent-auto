@@ -6,7 +6,7 @@ import {
 } from './Header.styled';
 import sprite from '../../assets/sprite.svg';
 
-export const Header = () => {
+export default function Header() {
   return (
     <HeaderContainer>
       <Navigation>
@@ -31,4 +31,4 @@ export const Header = () => {
       </Navigation>
     </HeaderContainer>
   );
-};
+}

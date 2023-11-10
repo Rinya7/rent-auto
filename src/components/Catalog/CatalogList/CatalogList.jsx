@@ -1,20 +1,23 @@
-import { useSelector } from 'react-redux';
-import { AutoItem } from '../CatalogItem/AutoItem';
-import { AutoUl } from './ImageGallery.styled';
-import { selectVisibleAutos } from '../../../redux/selectors';
-import { useLazyFetchAllRentAutos } from '../../../redux/api';
+//import { useSelector } from 'react-redux';
+
+import { AutoUl } from './CatalogList.styled';
+import { useLazyFetchAllRentAutosQuery } from '../../../redux/api';
+import CatalogItem from '../CatalogItem/CatalogItem';
 import { useEffect } from 'react';
+import { useState } from 'react';
 
-const CatalogList = () => {
-  const fetchAllRentAutos = useLazyFetchAllRentAutos();
-
-  console.log('fetchAllRentAutos', fetchAllRentAutos);
+export default function CatalogList() {
+  const [autos, setAutos] = useState([]);
+  const [fetchAllRentAutos] = useLazyFetchAllRentAutosQuery();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await fetchAllRentAutos();
-        console.log('result.data', result.data);
+        const data = await fetchAllRentAutos();
+        if (data.isSuccess) {
+          setAutos(data.data);
+        }
+        //console.log('data', data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -23,21 +26,19 @@ const CatalogList = () => {
     fetchData();
   }, [fetchAllRentAutos]);
 
-  const autos = useSelector(selectVisibleAutos);
+  console.log('autos', autos);
+
   return (
     <AutoUl>
-      {autos.map(({ id, tags, img }) => (
-        <AutoItem
-          key={id}
-          tags={tags}
-          img={img}
+      {autos.map((auto, index) => (
+        <CatalogItem
+          key={index}
+          auto={auto}
           onClick={() => {
             console.log('click');
           }}
-        ></AutoItem>
+        ></CatalogItem>
       ))}
     </AutoUl>
   );
-};
-
-export default CatalogList;
+}

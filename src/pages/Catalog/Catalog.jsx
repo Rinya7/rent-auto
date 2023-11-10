@@ -1,14 +1,10 @@
-import { Container, Block, Title, StyledLink } from './Catalog.styled';
+import CatalogList from '../../components/Catalog/CatalogList/CatalogList';
+import { Container } from './Catalog.styled';
 
-const Catalog = () => {
+export default function Catalog() {
   return (
     <Container>
-      <Block>
-        <Title>Catalog</Title>
-        <StyledLink to="/second/5">Half</StyledLink>
-      </Block>
+      <CatalogList></CatalogList>
     </Container>
   );
-};
-
-export default Catalog;
+}

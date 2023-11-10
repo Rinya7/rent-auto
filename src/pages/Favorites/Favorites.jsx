@@ -1,6 +1,6 @@
 import { Container, Block, Title, StyledLink } from './Favorites.styled';
 
-const Favorites = () => {
+export default function Favorites() {
   return (
     <Container>
       <Block>
@@ -9,6 +9,4 @@ const Favorites = () => {
       </Block>
     </Container>
   );
-};
-
-export default Favorites;
+}

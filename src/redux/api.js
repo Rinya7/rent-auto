@@ -1,13 +1,35 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import axios from 'axios';
 
-const baseURL = 'https://64ce98200c01d81da3eef588.mockapi.io';
+const axiosBaseQuery =
+  ({ baseUrl } = { baseUrl: '' }) =>
+  async ({ url, method, data, params, headers }) => {
+    try {
+      const result = await axios({
+        url: baseUrl + url,
+        method,
+        data,
+        params,
+        headers,
+      });
+      return { data: result.data };
+    } catch (axiosError) {
+      const err = axiosError;
+      return {
+        error: {
+          status: err.response?.status,
+          data: err.response?.data || err.message,
+        },
+      };
+    }
+  };
 
 export const api = createApi({
   reducerPath: 'api',
-  baseQuery: axios({
-    baseURL,
+  baseQuery: axiosBaseQuery({
+    baseUrl: 'https://64ce98200c01d81da3eef588.mockapi.io',
   }),
+
   endpoints: (builder) => ({
     fetchAllRentAutos: builder.query({
       query: () => ({ url: '/adverts' }),
@@ -15,4 +37,4 @@ export const api = createApi({
   }),
 });
 
-export const { useLazyFetchAllRentAutos } = api;
+export const { useLazyFetchAllRentAutosQuery } = api;

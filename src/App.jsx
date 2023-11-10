@@ -4,8 +4,8 @@ import Home from './pages/Home/Home';
 import Catalog from './pages/Catalog/Catalog';
 import Favorites from './pages/Favorites/Favorites';
 import { AppWrapper } from './App.styled';
-import { Header } from './components/Header/Header';
-import { Footer } from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 //const test = import.meta.env.VITE_API_TEST;
 
