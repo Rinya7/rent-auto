@@ -1,16 +1,28 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { AutoItem } from '../CatalogItem/AutoItem';
 import { AutoUl } from './ImageGallery.styled';
-import { addAuto } from '../../../redux/rentAutoSlice';
 import { selectVisibleAutos } from '../../../redux/selectors';
+import { useLazyFetchAllRentAutos } from '../../../redux/api';
 import { useEffect } from 'react';
 
 const CatalogList = () => {
-  const dispatch = useDispatch();
+  const fetchAllRentAutos = useLazyFetchAllRentAutos();
+
+  console.log('fetchAllRentAutos', fetchAllRentAutos);
 
   useEffect(() => {
-    dispatch(fetchAutos());
-  }, [dispatch]);
+    const fetchData = async () => {
+      try {
+        const result = await fetchAllRentAutos();
+        console.log('result.data', result.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [fetchAllRentAutos]);
+
   const autos = useSelector(selectVisibleAutos);
   return (
     <AutoUl>
@@ -19,7 +31,9 @@ const CatalogList = () => {
           key={id}
           tags={tags}
           img={img}
-          onClick={() => dispatch(addAuto(id))}
+          onClick={() => {
+            console.log('click');
+          }}
         ></AutoItem>
       ))}
     </AutoUl>

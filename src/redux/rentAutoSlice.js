@@ -1,20 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+export const initialState = {
+  favoritesAutos: [],
+  isLoading: false,
+  isError: false,
+  error: null,
+};
+
 const rentAutoSlice = createSlice({
   name: 'rentAuto',
-
-  initialState: { rentAutos: [], isLoading: false, error: null },
-
+  initialState,
   reducers: {
-    addAuto(state, action) {
-      state.autos.push(action.payload);
-    },
-    deleteAuto(state, action) {
-      state.autos = state.autos.filter((auto) => auto.id !== action.payload);
+    setFavoritesAutos: (state, { payload }) => {
+      state.favoritesAutos = payload;
     },
   },
 });
 
-export const { addAuto, deleteAuto } = rentAutoSlice.actions;
-
+export const { setFavoritesAutos } = rentAutoSlice.actions;
 export const rentAutoReducer = rentAutoSlice.reducer;
