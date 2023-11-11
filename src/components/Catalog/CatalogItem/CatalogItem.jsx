@@ -46,8 +46,9 @@ export default function CatalogItem({ auto }) {
       <Description>
         <Title>
           <p>
-            {auto.make}
-            {auto.make.length < 7 && <Model>{auto.model}</Model>},{auto.year}
+            {auto.make}&nbsp;
+            {auto.make.length < 7 && <Model>{auto.model}</Model>},&nbsp;
+            {auto.year}
           </p>
           <span>{auto.rentalPrice} $</span>
         </Title>

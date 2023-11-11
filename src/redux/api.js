@@ -32,10 +32,23 @@ export const api = createApi({
 
   endpoints: (builder) => ({
     fetchAllRentAutos: builder.query({
-      query: ({ page = 0, limit = 0 } = 0) => ({
+      query: ({ page = 0, limit = 0, make = 0, rentalPrice = 0 } = 0) => ({
         url: `/adverts${
-          page || limit
-            ? `?${page ? `page=${page}` : ''}${limit ? `&limit=${limit}` : ''}`
+          page || limit || make || rentalPrice
+            ? `?${page ? `page=${page}` : ''}${limit ? `&limit=${limit}` : ''}${
+                make ? `&make=${make}` : ''
+              }${rentalPrice ? `&rentalPrice<=${rentalPrice}` : ''}`
+            : ''
+        }`,
+      }),
+    }),
+    fetchByFilter: builder.query({
+      query: ({ make = '', rentalPrice = 0 } = 0) => ({
+        url: `/adverts${
+          make || rentalPrice
+            ? `?${make ? `make=${make}` : ''}${
+                rentalPrice ? `&rentalPrice<=${rentalPrice}` : ''
+              }`
             : ''
         }`,
       }),
@@ -43,4 +56,4 @@ export const api = createApi({
   }),
 });
 
-export const { useLazyFetchAllRentAutosQuery } = api;
+export const { useLazyFetchAllRentAutosQuery, useLazyFetchByFilterQuery } = api;
