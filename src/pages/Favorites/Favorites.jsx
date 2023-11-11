@@ -1,12 +1,10 @@
-import { Container, Block, Title, StyledLink } from './Favorites.styled';
+import FavoritesList from '../../components/Favorites/FavoritesList/FavoritesList';
+import { Container } from './Favorites.styled';
 
 export default function Favorites() {
   return (
     <Container>
-      <Block>
-        <Title>Favorites</Title>
-        <StyledLink to="/second/5">Half</StyledLink>
-      </Block>
+      <FavoritesList></FavoritesList>
     </Container>
   );
 }

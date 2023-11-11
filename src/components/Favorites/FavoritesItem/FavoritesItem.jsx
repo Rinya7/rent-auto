@@ -10,20 +10,31 @@ import {
   Button,
   SvgAdd,
   BtnAdd,
-} from './CatalogItem.styled';
+} from './FavoritesItem.styled';
 import sprite from '../../../assets/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addToFavorites,
   removeFromFavorites,
 } from '../../../redux/rentAutoSlice';
-import { selectFavoritesAutos } from '../../../redux/selectors';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
-export default function CatalogItem({ auto }) {
-  const favorites = useSelector(selectFavoritesAutos);
+export default function FavoritesItem({ auto }) {
+  const favorites = useSelector((state) => state.rentAuto.favoritesAutos);
   const dispatch = useDispatch();
 
   const isFavorite = favorites.includes(auto.id);
+  const [favoritesChanged, setFavoritesChanged] = useState(false);
+
+  useEffect(() => {
+    // Здесь вы можете выполнить любые дополнительные действия,
+    // которые вам нужны при изменении избранных автомобилей.
+    setFavoritesChanged(true);
+
+    // Очистите флаг изменений после обработки изменений.
+    return () => setFavoritesChanged(false);
+  }, [favorites]);
 
   const handleClick = () => {
     if (isFavorite) {

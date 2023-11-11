@@ -32,7 +32,13 @@ export const api = createApi({
 
   endpoints: (builder) => ({
     fetchAllRentAutos: builder.query({
-      query: () => ({ url: '/adverts' }),
+      query: ({ page = 0, limit = 0 } = 0) => ({
+        url: `/adverts${
+          page || limit
+            ? `?${page ? `page=${page}` : ''}${limit ? `&limit=${limit}` : ''}`
+            : ''
+        }`,
+      }),
     }),
   }),
 });

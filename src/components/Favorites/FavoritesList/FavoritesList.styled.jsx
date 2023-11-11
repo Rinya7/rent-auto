@@ -5,8 +5,8 @@ export const AutoUl = styled.ul`
   flex-wrap: wrap;
   column-gap: 29px;
   row-gap: 50px;
-  margin-bottom: 100px;
 `;
+
 export const BtnLoad = styled.button`
   color: #3470ff;
   font-size: 16px;
