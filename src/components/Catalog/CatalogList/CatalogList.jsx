@@ -17,7 +17,6 @@ export default function CatalogList() {
         if (data.isSuccess) {
           setAutos(data.data);
         }
-        //console.log('data', data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }

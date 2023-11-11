@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export const HeaderContainer = styled.div`
   padding: 10px;
+  background-color: #000;
 `;
 
 export const Navigation = styled.nav`
@@ -34,6 +35,7 @@ export const StyledLink = styled(Link)`
       0 0 40px #00baff,
       0 0 80px #00baff;
   }
+  margin-right: 100px;
 `;
 
 export const IconWrapper = styled.svg`

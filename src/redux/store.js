@@ -11,20 +11,19 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-
 import { api } from './api';
 import { rentAutoReducer } from './rentAutoSlice';
 
 const persistConfig = {
   key: 'rentAuto',
   storage,
-  whitelist: ['favoritesAutos'],
+  whitelist: ['favoritesAutos', 'isButtonPressed'],
 };
 
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
-    rentAuto: persistReducer(persistConfig, rentAutoReducer), // Замінено authReducer на rentAutoReducer
+    rentAuto: persistReducer(persistConfig, rentAutoReducer),
     states: rentAutoReducer,
   },
   middleware: (getDefaultMiddleware) =>

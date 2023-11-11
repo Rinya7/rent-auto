@@ -2,7 +2,9 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   text-align: center;
-  grid-template-columns: 1fr;
-  grid-gap: 16px;
-  padding-bottom: 24px;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 115px;
+  box-sizing: border-box;
 `;
