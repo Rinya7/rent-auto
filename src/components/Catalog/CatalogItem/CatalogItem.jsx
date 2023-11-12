@@ -18,8 +18,11 @@ import {
   removeFromFavorites,
 } from '../../../redux/rentAutoSlice';
 import { selectFavoritesAutos } from '../../../redux/selectors';
+import Modal from '../../Modal/Modal';
+import { useState } from 'react';
 
 export default function CatalogItem({ auto }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const favorites = useSelector(selectFavoritesAutos);
   const dispatch = useDispatch();
 
@@ -31,6 +34,14 @@ export default function CatalogItem({ auto }) {
     } else {
       dispatch(addToFavorites(auto.id));
     }
+  };
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
   };
   return (
     <ImageGalleryItemLi>
@@ -50,7 +61,7 @@ export default function CatalogItem({ auto }) {
             {auto.make.length < 7 && <Model>{auto.model}</Model>},&nbsp;
             {auto.year}
           </p>
-          <span>{auto.rentalPrice} $</span>
+          <span>{auto.rentalPrice}</span>
         </Title>
 
         <ParametersUl>
@@ -80,8 +91,9 @@ export default function CatalogItem({ auto }) {
           </Svg>
           <Li>{auto.functionalities[0]}</Li>
         </ParametersUl>
-        <Button>Learn more</Button>
+        <Button onClick={handleModalOpen}>Learn more</Button>
       </Description>
+      {isModalOpen && <Modal closeModal={handleModalClose} auto={auto}></Modal>}
     </ImageGalleryItemLi>
   );
 }

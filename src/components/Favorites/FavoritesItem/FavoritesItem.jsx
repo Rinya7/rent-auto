@@ -19,8 +19,10 @@ import {
 } from '../../../redux/rentAutoSlice';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import Modal from '../../Modal/Modal';
 
 export default function FavoritesItem({ auto }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const favorites = useSelector((state) => state.rentAuto.favoritesAutos);
   const dispatch = useDispatch();
 
@@ -28,11 +30,7 @@ export default function FavoritesItem({ auto }) {
   const [favoritesChanged, setFavoritesChanged] = useState(false);
 
   useEffect(() => {
-    // Здесь вы можете выполнить любые дополнительные действия,
-    // которые вам нужны при изменении избранных автомобилей.
     setFavoritesChanged(true);
-
-    // Очистите флаг изменений после обработки изменений.
     return () => setFavoritesChanged(false);
   }, [favorites]);
 
@@ -42,6 +40,14 @@ export default function FavoritesItem({ auto }) {
     } else {
       dispatch(addToFavorites(auto.id));
     }
+  };
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
   };
   return (
     <ImageGalleryItemLi>
@@ -60,7 +66,7 @@ export default function FavoritesItem({ auto }) {
             {auto.make}
             {auto.make.length < 7 && <Model>{auto.model}</Model>},{auto.year}
           </p>
-          <span>{auto.rentalPrice} $</span>
+          <span>{auto.rentalPrice}</span>
         </Title>
 
         <ParametersUl>
@@ -90,8 +96,9 @@ export default function FavoritesItem({ auto }) {
           </Svg>
           <Li>{auto.functionalities[0]}</Li>
         </ParametersUl>
-        <Button>Learn more</Button>
+        <Button onClick={handleModalOpen}>Learn more</Button>
       </Description>
+      {isModalOpen && <Modal closeModal={handleModalClose} auto={auto}></Modal>}
     </ImageGalleryItemLi>
   );
 }

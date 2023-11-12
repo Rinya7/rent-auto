@@ -21,9 +21,8 @@ export default function CatalogList({ filterValues }) {
   const [autoList, setAutoList] = useState(false);
 
   const [fetchAllRentAutos, { isFetching }] = useLazyFetchAllRentAutosQuery();
-  console.log('filterValues', filterValues);
   useEffect(() => {
-    if (filterValues && filterValues.selectedModel) {
+    if (filterValues) {
       setFilter((prevFilter) => ({
         ...prevFilter,
         make: filterValues.selectedModel,
@@ -31,8 +30,6 @@ export default function CatalogList({ filterValues }) {
       }));
     }
   }, [filterValues]);
-
-  console.log('filter', filter);
 
   useEffect(() => {
     const fetchData = async () => {

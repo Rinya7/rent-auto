@@ -1,5 +1,12 @@
 import styled from '@emotion/styled';
 
+export const Div = styled.div`
+  overflow-y: scroll;
+  height: 660px;
+  padding-bottom: 25px;
+  padding-top: 25px;
+`;
+
 export const AutoUl = styled.ul`
   display: flex;
   flex-wrap: wrap;

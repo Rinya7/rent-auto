@@ -32,7 +32,7 @@ export const api = createApi({
 
   endpoints: (builder) => ({
     fetchAllRentAutos: builder.query({
-      query: ({ page = 0, limit = 0, make = 0, rentalPrice = 0 } = 0) => ({
+      query: ({ page = 0, limit = 0, make = 0, rentalPrice = 0 } = {}) => ({
         url: `/adverts${
           page || limit || make || rentalPrice
             ? `?${page ? `page=${page}` : ''}${limit ? `&limit=${limit}` : ''}${

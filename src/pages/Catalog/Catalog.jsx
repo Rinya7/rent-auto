@@ -5,6 +5,7 @@ import { Container } from './Catalog.styled';
 
 export default function Catalog() {
   const [filter, setFilter] = useState(null);
+
   return (
     <Container>
       <Filters onFilterChange={setFilter}></Filters>

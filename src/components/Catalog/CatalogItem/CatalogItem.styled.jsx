@@ -37,6 +37,10 @@ export const SvgAdd = styled.svg`
   width: 18px;
   height: 18px;
   flex-shrink: 0;
+  display: inline-block;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
 `;
 
 export const Description = styled.div``;

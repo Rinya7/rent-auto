@@ -1,6 +1,6 @@
 //import { useSelector } from 'react-redux';
 
-import { AutoUl } from './FavoritesList.styled';
+import { AutoUl, Div } from './FavoritesList.styled';
 import { useLazyFetchAllRentAutosQuery } from '../../../redux/api';
 import FavoritesItem from '../FavoritesItem/FavoritesItem';
 import { useEffect } from 'react';
@@ -34,10 +34,12 @@ export default function FavoritesList() {
   }, [fetchAllRentAutos, favorites]);
 
   return (
-    <AutoUl>
-      {autos.map((auto, index) => (
-        <FavoritesItem key={index} auto={auto}></FavoritesItem>
-      ))}
-    </AutoUl>
+    <Div>
+      <AutoUl>
+        {autos.map((auto, index) => (
+          <FavoritesItem key={index} auto={auto}></FavoritesItem>
+        ))}
+      </AutoUl>
+    </Div>
   );
 }

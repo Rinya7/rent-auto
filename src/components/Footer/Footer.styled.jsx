@@ -4,7 +4,8 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+
+  background-color: #000;
 `;
 
 export const Title = styled.h1`
