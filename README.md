@@ -1,108 +1,61 @@
-# React + Vite template
+# Car Rental Application
 
-Цей проєкт було створено за допомогою [Create Vite](https://vitejs.dev/). Для
-знайомства і налаштування додаткових можливостей
-[звернися до документації](https://vitejs.dev/guide/).
+This project is a React-based application for a car rental company in Ukraine.
+It consists of three main pages:
 
-## Створення репозиторію за шаблоном
+## 1. Home Page:
 
-Використовуй цей репозиторій організації GoIT як шаблон для створення
-репозиторію свого проєкту. Для цього натисни на кнопку `"Use this template"` і
-обери опцію `"Create a new repository"`, як показано на зображенні.
+1. Provides a general overview of the services offered by the company.
+2. tyling and layout are at your discretion.
 
-![Creating repo from a template step 1](./src/assets/template-step-1.png)
+## 2. Catalog Page:
 
-На наступному кроці відкриється сторінка створення нового репозиторію. Заповни
-поле його імені, переконайся що репозиторій публічний, після чого натисни кнопку
-`"Create repository from template"`.
+- Displays a catalog of cars with various configurations.
+- Users can filter cars by brand, hourly rental price, and mileage.
+- Pagination is implemented, showing 12 advertisements per page initially and
+  loading more on button click.
+- Users can add advertisements to their favorites, and the state is preserved
+  even after refreshing the page.
+- Clicking on the "Learn more" button opens a modal with detailed information
+  about the car and rental conditions.
+- The modal can be closed by clicking the close button, clicking on the
+  backdrop, or pressing the 'Esc' key.
 
-![Creating repo from a template step 2](./src/assets/template-step-2.png)
+## 3. Favorites Page:
 
-Після того як репозиторій буде створено, необхідно перейти в налаштування
-створеного репозиторію на вкладку `Settings` > `Actions` > `General` як показано
-на зображенні.
+- Displays advertisements that the user has added to their favorites.
+- Data persists across page refreshes.
 
-![Settings GitHub Actions permissions step 1](./src/assets/gh-actions-perm-1.png)
+### Technical Specifications
 
-Проскроливши сторінку до самого кінця, у секції `"Workflow permissions"` вибери
-опцію `"Read and write permissions"` і постав галочку в чекбоксі. Це необхідно
-для автоматизації процесу деплою проєкту.
+- Implement the advertisement card according to the provided design.
+- Initially render 12 advertisements on the catalog page and load more on button
+  click.
+- Allow users to add and remove advertisements from their favorites.
+- Preserve the user's favorites across page refreshes.
+- Implement a detailed modal view for each advertisement.
+- Format the car mileage with a comma for better readability.
+- Implement a "Rental Car" button that provides users with the company's contact
+  number.
 
-![Settings GitHub Actions permissions step 2](./src/assets/gh-actions-perm-2.png)
+### Additional Features
 
-Тепер у тебе є особистий репозиторій проєкту, зі структурою файлів і папок
-репозиторія-шаблону. Далі працюй з ним як з будь-яким іншим особистим
-репозиторієм, клонуй його собі на комп'ютер, пиши код, роби комміти і відправляй
-їх на GitHub.
+- Add a dropdown for filtering cars by brand using data from makes.json.
+- Implement React Router for navigation with the following routes: /: Home page
+  /catalog: Catalog page /favorites: Favorites page
+- Redirect users to the home page for non-existing routes.
 
-## Підготовка до роботи
+### Backend - MockAPI
 
-1. Переконайся, що на комп'ютері встановлена LTS-версія Node.js.
-   [Скачай і встанови](https://nodejs.org/en/) її якщо необхідно.
-2. Встановіть базові залежності проекту командою `npm install`.
-3. Запустіть режим розробки, виконавши команду `npm run dev`.
-4. Перейди в браузері за адресою, що зазначено в терміналі.
+- Create a personal backend for development using MockAPI.
+- Define an "Advert" resource with the specified fields.
+- Populate the database with at least 32 advertisements with varying values.
+- Implement pagination on the MockAPI side.
 
-## Деплой
+### Getting Started
 
-Продакшн версія проєкту буде автоматично збиратися і деплоїтися на GitHub Pages,
-у гілку `gh-pages`, щоразу, коли оновлюється гілка `main`. Наприклад, після
-прямого пушу або прийнятого пул-реквесту. Для цього необхідно у файлі
-`vite.config.js` відредагувати поле `base`, замінивши `react_vite` на свою назву
-репозиторію `"/your_repo_name"`, і відправити зміни на GitHub.
-
-Далі необхідно зайти в налаштування GitHub-репозиторію (`Settings` > `Pages`) і
-виставити роздачу продакшн версії файлів із папки `/root` гілки `gh-pages`, якщо
-це не було зроблено автоматично.
-
-![GitHub Pages settings](./src/assets/repo-settings.png)
-
-### Статус деплоя
-
-Статус деплою крайнього коміту відображається іконкою біля його ідентифікатора.
-
-- **Жовтий колір** - виконується збірка і деплой проєкту.
-- **Зелений колір** - деплой завершився успішно.
-- **Червоний колір** - під час збирання або деплою сталася помилка.
-
-Детальнішу інформацію про статус можна подивитися, клікнувши на іконку, і в
-випадаючому вікні перейти за посиланням `Details`.
-
-![Deployment status](./src/assets/deploy-status.png)
-
-### Жива сторінка
-
-Через якийсь час, зазвичай кілька хвилин, живу сторінку можна буде подивитися за
-адресою, вказаною в налаштуваннях GitHub-репозиторію (`Settings` > `Pages`).
-
-![GitHub-pages URL](./src/assets/gh-pages-url.png)
-
-Якщо відкривається порожня сторінка, переконайся що у вкладці `Console` немає
-помилок пов'язаних із неправильними шляхами до CSS і JS файлів проекту
-(**404**). Швидше за все найімовірніше, у тебе неправильне значення поля `base`
-у файлі `vite.config.js`.
-
-### Маршрутизація
-
-Якщо додаток використовує бібліотеку `react-router-dom` для маршрутизації,
-необхідно додатково налаштувати компонент `<BrowserRouter>`, передавши в пропе
-`basename` точну назву твого репозиторію. Слеш на початку рядка обов'язковий.
-
-```jsx
-<BrowserRouter basename="/your_repo_name">
-  <App />
-</BrowserRouter>
-```
-### Додавання змінних в  .env
-Для зберігання конфігураційних даних, таких як API ключі, адреси серверів, порти та інші змінні використовуйте файл `.env`. Для цього необхідно з назви файлу `.env.template` видалити зайві ".template",після чого файл відповідатиме умовам файлу `.ignore` і буде зберігатися лише локально, не публікуючись на віддаленому репозиторії з метою безпеки. Задля використання змінних на GitHub-pages усі змінні, передбачені файлом .env, слід додати до файлу `.github/workflows/deploy.yml`, а також до налаштувань репозиторію. Для цього слід перейти (`Settings` > `Secrets and variables` > `Actions`)
-
-![Add enviroments from .env](./src/assets/secrets.png)
-
-## Як це працює
-
-1. Після кожного пушу в гілку `main` GitHub-репозиторію, запускається
-   спеціальний скрипт (GitHub Action) з файлу `.github/workflows/deploy.yml`.
-2. Усі файли репозиторію копіюються на сервер, де проєкт ініціалізується і
-   проходить збірку перед деплоєм. 3 Якщо всі кроки пройшли успішно, зібрана
-   продакшн-версія файлів проєкту відправляється в гілку `gh-pages`. В іншому
-   випадку, в логах виконання скрипта буде вказано в чому проблема.
+1. Clone the repository.
+2. Install dependencies: `npm install`
+3. Run the application: `npm start` Feel free to customize the styling, layout,
+   and any additional features according to your preferences. If you have any
+   questions or encounter issues, please let me know!
