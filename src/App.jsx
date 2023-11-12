@@ -7,10 +7,7 @@ import { AppWrapper } from './App.styled';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
-//const test = import.meta.env.VITE_API_TEST;
-
 function App() {
-  //  console.log(test);
   return (
     <AppWrapper>
       <Header />

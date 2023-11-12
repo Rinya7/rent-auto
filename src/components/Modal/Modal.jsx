@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
   CloseButton,
   ModalDiv,
@@ -22,6 +23,21 @@ import sprite from '../../assets/sprite.svg';
 import React, { useEffect } from 'react';
 
 export default function Modal({ closeModal, auto }) {
+  const {
+    img,
+    model,
+    make,
+    year,
+    rentalCompany,
+    type,
+    mileage,
+    functionalities,
+    accessories,
+    rentalConditions,
+    rentalPrice,
+    description,
+  } = auto;
+
   useEffect(() => {
     const handelKeyDown = (e) => {
       if (e.code === 'Escape') {
@@ -40,13 +56,6 @@ export default function Modal({ closeModal, auto }) {
     }
   };
 
-  const {
-    accessories,
-    functionalities,
-    rentalConditions,
-    mileage,
-    rentalPrice,
-  } = auto;
   const conditions = rentalConditions.split('\n');
   const age = conditions[0].slice(-2);
 
@@ -58,44 +67,44 @@ export default function Modal({ closeModal, auto }) {
             <use href={`${sprite}#close`}></use>
           </SvgClose>
         </CloseButton>
-        <ImageGalleryItemImg src={auto.img} alt={auto.model} />
+        <ImageGalleryItemImg src={img} alt={model} />
         <Title>
           <p>
-            {auto.make}&nbsp;
-            <Model>{auto.model}</Model>,&nbsp;
-            {auto.year}
+            {make}&nbsp;
+            <Model>{model}</Model>,&nbsp;
+            {year}
           </p>
         </Title>
 
         <ParametersUl>
-          <Li>{auto.make}</Li>
+          <Li>{make}</Li>
           <Svg>
             <use href={`${sprite}#vertical`}></use>
           </Svg>
-          <Li>{auto.make}</Li>
+          <Li>{make}</Li>
           <Svg>
             <use href={`${sprite}#vertical`}></use>
           </Svg>
-          <Li>{auto.rentalCompany}</Li>
+          <Li>{rentalCompany}</Li>
           <Svg>
             <use href={`${sprite}#vertical`}></use>
           </Svg>
-          <Li>{auto.type}</Li>
+          <Li>{type}</Li>
           <Svg>
             <use href={`${sprite}#vertical`}></use>
           </Svg>
-          <Li>{auto.model}</Li>
+          <Li>{model}</Li>
           <Svg>
             <use href={`${sprite}#vertical`}></use>
           </Svg>
-          <Li>{auto.mileage}</Li>
+          <Li>{mileage}</Li>
           <Svg>
             <use href={`${sprite}#vertical`}></use>
           </Svg>
-          <Li>{auto.functionalities[0]}</Li>
+          <Li>{functionalities[0]}</Li>
         </ParametersUl>
 
-        <Description>{auto.description}</Description>
+        <Description>{description}</Description>
         <Accessories>Accessories and functionalities:</Accessories>
         <AccessoriesUl>
           {accessories.map((accessory, index) => (
@@ -138,3 +147,20 @@ export default function Modal({ closeModal, auto }) {
     </Overlay>
   );
 }
+
+Modal.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  auto: PropTypes.shape({
+    img: PropTypes.string.isRequired,
+    model: PropTypes.string.isRequired,
+    make: PropTypes.string.isRequired,
+    year: PropTypes.number.isRequired,
+    rentalCompany: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    mileage: PropTypes.number.isRequired,
+    functionalities: PropTypes.arrayOf(PropTypes.string).isRequired,
+    accessories: PropTypes.arrayOf(PropTypes.string).isRequired,
+    rentalConditions: PropTypes.string.isRequired,
+    rentalPrice: PropTypes.string.isRequired,
+  }).isRequired,
+};

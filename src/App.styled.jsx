@@ -4,7 +4,6 @@ import ManropeMedium from './assets/fonts/Manrope-Medium.ttf';
 import ManropeRegular from './assets/fonts/Manrope-Regular.ttf';
 import ManropeSemiBold from './assets/fonts/Manrope-SemiBold.ttf';
 
-//import 'normalize.css';
 import emotionNormalize from 'emotion-normalize';
 
 export const AppWrapper = styled.div`

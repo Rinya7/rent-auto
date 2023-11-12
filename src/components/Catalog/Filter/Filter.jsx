@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import {
   SearchContainer,
@@ -109,3 +110,7 @@ export default function Filter({ onFilterChange }) {
     </SearchContainer>
   );
 }
+
+Filter.propTypes = {
+  onFilterChange: PropTypes.func.isRequired,
+};

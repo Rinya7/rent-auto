@@ -22,7 +22,7 @@ export const ImageGalleryItemImg = styled.img`
 export const BtnAdd = styled.button`
   background: transparent;
   border: 0 solid #000;
-  /*border: none;*/
+
   position: absolute;
   top: 14px;
   right: 14px;
@@ -73,7 +73,7 @@ export const ParametersUl = styled.div`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  -webkit-line-clamp: 2; /* Ограничивает количество отображаемых строк */
+  -webkit-line-clamp: 2;
   white-space: normal;
 `;
 

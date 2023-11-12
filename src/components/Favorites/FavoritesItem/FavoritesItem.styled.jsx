@@ -69,7 +69,7 @@ export const ParametersUl = styled.div`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  -webkit-line-clamp: 2; /* Ограничивает количество отображаемых строк */
+  -webkit-line-clamp: 2;
   white-space: normal;
 `;
 

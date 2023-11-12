@@ -1,4 +1,4 @@
-//import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { AutoUl, BtnLoad, Div } from './CatalogList.styled';
 import { useLazyFetchAllRentAutosQuery } from '../../../redux/api';
@@ -80,3 +80,7 @@ export default function CatalogList({ filterValues }) {
     </>
   );
 }
+
+CatalogList.propTypes = {
+  filterValues: PropTypes.object,
+};

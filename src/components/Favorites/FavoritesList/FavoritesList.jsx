@@ -1,5 +1,3 @@
-//import { useSelector } from 'react-redux';
-
 import { AutoUl, Div } from './FavoritesList.styled';
 import { useLazyFetchAllRentAutosQuery } from '../../../redux/api';
 import FavoritesItem from '../FavoritesItem/FavoritesItem';

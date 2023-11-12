@@ -77,7 +77,7 @@ export const ParametersUl = styled.div`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  -webkit-line-clamp: 2; /* Ограничивает количество отображаемых строк */
+  -webkit-line-clamp: 2;
   white-space: normal;
 `;
 
@@ -134,6 +134,8 @@ export const Conditions = styled.p`
   text-align: left;
   padding: 7px 14px;
   margin-right: 8px;
+  border-radius: 35px;
+  background: #f9f9f9;
 `;
 
 export const Age = styled.span`

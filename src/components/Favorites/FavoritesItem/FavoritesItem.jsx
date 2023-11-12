@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
   ImageGalleryItemImg,
   ImageGalleryItemLi,
@@ -22,11 +23,22 @@ import { useState } from 'react';
 import Modal from '../../Modal/Modal';
 
 export default function FavoritesItem({ auto }) {
+  const {
+    id,
+    img,
+    model,
+    make,
+    year,
+    rentalCompany,
+    type,
+    mileage,
+    functionalities,
+  } = auto;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const favorites = useSelector((state) => state.rentAuto.favoritesAutos);
   const dispatch = useDispatch();
 
-  const isFavorite = favorites.includes(auto.id);
+  const isFavorite = favorites.includes(id);
   const [favoritesChanged, setFavoritesChanged] = useState(false);
 
   useEffect(() => {
@@ -36,9 +48,9 @@ export default function FavoritesItem({ auto }) {
 
   const handleClick = () => {
     if (isFavorite) {
-      dispatch(removeFromFavorites(auto.id));
+      dispatch(removeFromFavorites(id));
     } else {
-      dispatch(addToFavorites(auto.id));
+      dispatch(addToFavorites(id));
     }
   };
 
@@ -51,11 +63,11 @@ export default function FavoritesItem({ auto }) {
   };
   return (
     <ImageGalleryItemLi>
-      <ImageGalleryItemImg src={auto.img} alt={auto.model} />
+      <ImageGalleryItemImg src={img} alt={model} />
       <BtnAdd onClick={handleClick}>
         <SvgAdd>
           <use
-            href={`${sprite}${!isFavorite ? `#heart` : `#activeheat`}`}
+            href={`${sprite}${!isFavorite ? `#heart` : `#active-heart`}`}
           ></use>
         </SvgAdd>
       </BtnAdd>
@@ -63,38 +75,38 @@ export default function FavoritesItem({ auto }) {
       <Description>
         <Title>
           <p>
-            {auto.make}
-            {auto.make.length < 7 && <Model>{auto.model}</Model>},{auto.year}
+            {make}
+            {make.length < 7 && <Model>{model}</Model>},{year}
           </p>
           <span>{auto.rentalPrice}</span>
         </Title>
 
         <ParametersUl>
-          <Li>{auto.make}</Li>
+          <Li>{make}</Li>
           <Svg>
             <use href={`${sprite}#vertical`}></use>
           </Svg>
-          <Li>{auto.make}</Li>
+          <Li>{make}</Li>
           <Svg>
             <use href={`${sprite}#vertical`}></use>
           </Svg>
-          <Li>{auto.rentalCompany}</Li>
+          <Li>{rentalCompany}</Li>
           <Svg>
             <use href={`${sprite}#vertical`}></use>
           </Svg>
-          <Li>{auto.type}</Li>
+          <Li>{type}</Li>
           <Svg>
             <use href={`${sprite}#vertical`}></use>
           </Svg>
-          <Li>{auto.model}</Li>
+          <Li>{model}</Li>
           <Svg>
             <use href={`${sprite}#vertical`}></use>
           </Svg>
-          <Li>{auto.mileage}</Li>
+          <Li>{mileage}</Li>
           <Svg>
             <use href={`${sprite}#vertical`}></use>
           </Svg>
-          <Li>{auto.functionalities[0]}</Li>
+          <Li>{functionalities[0]}</Li>
         </ParametersUl>
         <Button onClick={handleModalOpen}>Learn more</Button>
       </Description>
@@ -102,3 +114,17 @@ export default function FavoritesItem({ auto }) {
     </ImageGalleryItemLi>
   );
 }
+
+FavoritesItem.propTypes = {
+  auto: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    img: PropTypes.string.isRequired,
+    model: PropTypes.string.isRequired,
+    make: PropTypes.string.isRequired,
+    year: PropTypes.number.isRequired,
+    rentalCompany: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    mileage: PropTypes.number.isRequired,
+    functionalities: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }).isRequired,
+};

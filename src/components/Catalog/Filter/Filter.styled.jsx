@@ -24,7 +24,6 @@ export const Label = styled.label`
 `;
 
 export const Select = styled.select`
-  // Ваши стили для селекта
   border-radius: 14px;
   border: none;
   background: #f7f7fb;
@@ -54,10 +53,10 @@ export const SelectPrice = styled.select`
 
   &::placeholder {
     padding-left: 18px;
-    color: #121417; // Замените на нужный цвет
-    font-size: 18px; // Замените на нужный размер
-    font-weight: 500; // Замените на нужный вес
-    line-height: calc(20 / 18); // Замените на нужную высоту строки
+    color: #121417;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: calc(20 / 18);
   }
 `;
 
@@ -73,11 +72,10 @@ export const InputFrom = styled.input`
   padding-left: 18px;
 
   &::placeholder {
-    /*padding-left: 18px;*/
-    color: #121417; // Замените на нужный цвет
-    font-size: 18px; // Замените на нужный размер
-    font-weight: 500; // Замените на нужный вес
-    line-height: calc(20 / 18); // Замените на нужную высоту строки
+    color: #121417;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: calc(20 / 18);
   }
 `;
 
@@ -90,11 +88,10 @@ export const InputTo = styled.input`
   padding-left: 18px;
 
   &::placeholder {
-    /*padding-left: 18px;*/
-    color: #121417; // Замените на нужный цвет
-    font-size: 18px; // Замените на нужный размер
-    font-weight: 500; // Замените на нужный вес
-    line-height: calc(20 / 18); // Замените на нужную высоту строки
+    color: #121417;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: calc(20 / 18);
   }
 `;
 

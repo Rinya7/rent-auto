@@ -17,7 +17,7 @@ export const BtnLoad = styled.button`
   color: #3470ff;
   font-size: 16px;
   font-weight: 500;
-  line-height: calc() 24/16; /* 150% */
+  line-height: calc() 24/16;
   text-decoration-line: underline;
   border: none;
   background: none;
